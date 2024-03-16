@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>GEOMATHS - Jean-Baptiste Sainte-Beuve</title>
+	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="assets/favicon.png" />
+	<meta name="author" content="Jean-Baptiste Sainte-Beuve">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="https://kit.fontawesome.com/1fa97dd1e0.js" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://use.typekit.net/rtq1ubc.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="outerNews">
+		<div id="innerNews">
+			<small>Rappel: Vous m'avez proposé une compensation de point suite au devoir du S1</small>
+			<h3>Changelog 12/01/2021</h3>
+			<ul>
+			<li>Responsive 📱</li>
+			<li>Bug fix 🔨</li>
+			<li>Scroll event sur les scènes Three.js 📢</li>
+			</ul>
+			<h3>Changelog 10/01/2021</h3>
+			<ul>
+			<li>Stockage des figures avec SessionStorage 💿</li>
+			<li>Création d'une console (ajout des destruct daté) 🖥</li>
+			<li>Modélisation des figures avec Three.js 📐</li>
+			<li>Récupération des données traitées en PHP avec Ajax 🛠</li>
+			<li>Animation et UI 📲</li>
+			<li>Interface reloadless ⚙️</li>
+			</ul>
+			<h3>Changelog 26/12/2020</h3>
+			<ul>
+				<li>Réalisation du TP de base ✅</li>
+				<li>Mise en forme modèle MVC ⌨️</li>
+			</ul>
+			<div id="btnStart"><span>Démarrer <i class="fas fa-long-arrow-alt-right"></i></span></div>
+		</div>
+	</div>
+
+	<div id="btnConsole">
+		<i class="fas fa-tv"></i>
+		<i class="fas fa-times" style="display: none;"></i>
+		<span id="notifBtn"></span>
+	</div>
+	<div id="btnSave">
+		<i class="fas fa-save"></i>
+		<i class="fas fa-times" style="display: none;"></i>
+	</div>
+	<div id="Console"><h2>Console</h2><ul></ul></div>
+	<div id="Save">
+		<div id="save-head"><h2>Figures sauvegardées</h2> <button><i class="fas fa-times"></i> Effacer tout</button></div>
+	</div>
+
+	<header>
+		<img src="assets/logo.svg">
+	</header>
+	<section class="container" id="panel1">
+		<h2 class="title">Choisissez une forme géométrique</h2>
+		<div class="row">
+			<div class="col-3 cardGeom mx-md-1">
+				<img src="assets/cercle.png">
+				<div class="ctn-geom">
+					<h2>Cercle</h2>
+					<div id="cercle" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 cardGeom mx-md-1">
+				<img src="assets/rectangle.png">
+				<div class="ctn-geom">
+					<h2>Rectangle</h2>
+					<div id="rectangle" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 cardGeom mx-md-1">
+				<img src="assets/triangle.png">
+				<div class="ctn-geom">
+					<h2>Triangle</h2>
+					<div id="triangle" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 cardGeom">
+				<img src="assets/fonction.png">
+				<div class="ctn-geom">
+					<h2>Fonction</h2>
+					<div id="fonction" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row my-4">
+			<div class="col-3 cardGeom">
+				<img src="assets/cylindre.png">
+				<div class="ctn-geom">
+					<h2>Cylindre</h2>
+					<div id="cylindre" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 cardGeom">
+				<img src="assets/cone.png">
+				<div class="ctn-geom">
+					<h2>Cône</h2>
+					<div id="cone" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 cardGeom">
+				<img src="assets/sphere.png">
+				<div class="ctn-geom">
+					<h2>Sphère</h2>
+					<div id="sphere" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 cardGeom">
+				<img src="assets/parallelepipede.png">
+				<div class="ctn-geom">
+					<h2>Parallélépipède</h2>
+					<div id="parallelepipede" class="btn-draw">
+						<p>Dessiner</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="panel2">
+		<div class="container" id="ctnForm">
+			<div class="row" >
+				
+				<form id="formVariable" class="col-12">
+					<a id="btnRetour"><i class="fas fa-long-arrow-alt-left"></i> Retour</a>
+					<h2 class="title">Remplissez les informations nécessaires</h2>
+						
+				</form>
+			</div>
+			<div class="row" id="panel3">
+				<div class="col-6" id="ctnCanvas">
+				</div>
+				<div class="col-6" id="result">
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="https://threejs.org/build/three.js"></script>
+	<script src="js/orbitControls.js"></script>
+	<script src="js/draw.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
